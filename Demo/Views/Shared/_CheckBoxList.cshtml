@@ -1,0 +1,15 @@
+﻿@model (string Name, dynamic List, bool IsBreak)
+
+<div>
+    @foreach (SelectListItem item in ViewBag.SubjectList)
+    {
+        <label>
+            <input type="checkbox"
+                   name="subjects"
+                   value="@item.Value"
+                   checked="@item.Selected">@item.Text
+        </label>
+
+        <br>
+    }
+</div>

@@ -1,0 +1,39 @@
+﻿@model Subject
+
+@{
+    ViewBag.Title = "Subject | Index";
+    IEnumerable<Subject> subjects = ViewBag.Subjects;
+}
+
+<form method="post" class="form">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" autofocus>
+    <span asp-validation-for="Name"></span>
+
+    <section>
+        <button>Insert</button>
+        <button type="reset">Reset</button>
+    </section>
+</form>
+
+<p>@subjects.Count() record(s)</p>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    @foreach (var s in subjects)
+    {
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>
+                <button data-post="/Subject/Delete/@s.Id">Delete</button>
+            </td>
+        </tr>
+    }
+</table>

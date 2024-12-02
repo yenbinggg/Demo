@@ -1,0 +1,32 @@
+﻿@model Teacher
+
+@{
+    ViewBag.Title = "Teacher | Assign Subject";
+}
+
+<form method="post" class="form">
+    <label asp-for="Id"></label>
+    <b>@Model.Id</b>
+    <br>
+
+    <label asp-for="Name"></label>
+    <b>@Model.Name</b>
+    <br>
+
+    <label>Subjects</label>
+    <div>
+        <partial name="_CheckBoxList"
+            model='("subjects", ViewBag.SubjectList, true)'>
+
+        <div>
+            <a href="#" data-check="subjects">Check All</a> |
+            <a href="#" data-uncheck="subjects">Uncheck All</a>
+        </div>
+    </div>
+    <br>
+
+    <section>
+        <button>Assign</button>
+        <button data-get="/Teacher/Index">Index</button>
+    </section>
+</form>
